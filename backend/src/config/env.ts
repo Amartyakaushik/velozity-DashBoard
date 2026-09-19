@@ -13,7 +13,8 @@ export const env = {
   databaseUrl: required("DATABASE_URL"),
   jwtAccessSecret: required("JWT_ACCESS_SECRET"),
   jwtRefreshSecret: required("JWT_REFRESH_SECRET"),
-  accessTokenTtl: process.env.ACCESS_TOKEN_TTL ?? "15m",
+  accessTokenTtl: (process.env.ACCESS_TOKEN_TTL ??
+    "15m") as `${number}${"s" | "m" | "h" | "d" | "w" | "y"}`,
   refreshTokenTtlDays: Number(process.env.REFRESH_TOKEN_TTL_DAYS ?? "7"),
   port: Number(process.env.PORT ?? "4000"),
   nodeEnv: process.env.NODE_ENV ?? "development",
